@@ -1,4 +1,4 @@
-import { Register } from "../components/pages/projects/components"
+import { Register } from "../pages/projects/components"
 
 export default function project() {
   return (

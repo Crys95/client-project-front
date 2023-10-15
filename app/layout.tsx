@@ -25,10 +25,8 @@ const RootLayout = ({ children }: RootLayoutProps) => {
       <body>
         <Header />
         <LayoutProvider>
-          
         {children}
         </LayoutProvider>
-        
         <Footer />
       </body>
     </html>

@@ -1,4 +1,5 @@
 export interface itens {
+  id: number
   cpf: string
   data_nascimento: string
   email: string
@@ -9,4 +10,8 @@ export interface itens {
 
 export interface IResponseClient {
   data: [itens]
+}
+
+export interface RequestClientDelet {
+  id: number
 }

@@ -1,23 +1,13 @@
 "use client"
 
 import { motion } from 'framer-motion';
-import axios from 'axios';
-import { useQuery } from 'react-query';
-import { IResponseClient } from '../types';
+import { useClinetHome } from '../hooks';
+import { formatCPF, formatDate } from '@/app/utils/format';
+import { BsTrash3Fill } from 'react-icons/bs'
 
-export const HeroSection = () => {
-  const Client = async () => {
-    try {
-      const response = await axios.get<IResponseClient>('http://127.0.0.1:8000/api/client/');
-      return response.data;
-    } catch (error) {
-      console.error('Erro ao buscar os dados:', error);
-      throw new Error('Ocorreu um erro ao buscar os dados.');
-    }
-  };
+export const HomeCLient = () => {
 
-  const { data } = useQuery('clientKay', Client);
-
+  const { data, DeleteClient } = useClinetHome()
 
   return (
     <section className="w-full bg-hero-image h-full lg:h-[630px] bg-cover bg-center bg-no-repeat flex flex-col items-center justify-center px-2">
@@ -37,16 +27,20 @@ export const HeroSection = () => {
                 <th className="py-2 px-4 border-b">data nascimento</th>
                 <th className="py-2 px-4 border-b">email</th>
                 <th className="py-2 px-4 border-b">genero</th>
+                <th className="py-2 px-4 border-b">Excluir</th>
               </tr>
             </thead>
             <tbody>
               {data?.data?.map(item => (
                 <tr key={item.cpf} className='bg-gray-800 '>
-                  <td className="py-2 px-4 border-b text-center">{item.nome}</td>
-                  <td className="py-2 px-4 border-b text-center">{item.cpf}</td>
-                  <td className="py-2 px-4 border-b text-center">{item.data_nascimento}</td>
+                  <td className="py-2 px-4 border-b text-center">{`${item.nome} ${item.sobrenome}`}</td>
+                  <td className="py-2 px-4 border-b text-center">{formatCPF(item.cpf)}</td>
+                  <td className="py-2 px-4 border-b text-center">{formatDate(item.data_nascimento)}</td>
                   <td className="py-2 px-4 border-b text-center">{item.email}</td>
                   <td className="py-2 px-4 border-b text-center">{item.genero}</td>
+                  <td className="py-2 px-4 border-b text-center">
+                    <div onClick={() => DeleteClient.mutate({ id: item.id })} className='flex justify-center items-center cursor-pointer'><BsTrash3Fill color='#e73030' /></div>
+                  </td>
                 </tr>
               ))}
             </tbody>

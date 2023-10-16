@@ -1,14 +1,14 @@
 "use client";
-import axios from "axios";
 import { IResponseClient, RequestClientDelet } from "../types/types";
 import { useMutation, useQuery } from "react-query";
+import { api } from "@/services/api";
 
 export function useClinetHome() {
 
   const Client = async () => {
     try {
-      const response = await axios.get<IResponseClient>(
-        "http://127.0.0.1:8000/api/client/"
+      const response = await api.get<IResponseClient>(
+        "/client"
       );
       return response.data;
     } catch (error) {
@@ -21,8 +21,8 @@ export function useClinetHome() {
 
   const DeleteClient = useMutation(
     async (data: RequestClientDelet) => {
-      const response = await axios.delete(
-        "http://127.0.0.1:8000/api/client/client-delete",
+      const response = await api.delete(
+        "/client/client-delete",
         { data }
       );
       return response.data;

@@ -1,7 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
 import { useClinet } from "../hooks";
-import { formatCPF } from "@/app/utils/format";
 
 export const Register = () => {
   const { handleSubmit, onSubmit, register, errors, handleFormatMask } = useClinet();
@@ -59,7 +58,7 @@ export const Register = () => {
                 placeholder="email"
                 className="w-full h-14 bg-gray-800 rounded-lg placeholder:text-gray-500 pl-3 text-gray-50"
               />
-              {errors.cpf && (
+              {errors.email && (
                 <span className="text-red-600">email invalido</span>
               )}
             </div>
@@ -74,7 +73,7 @@ export const Register = () => {
                 <option value="FEMININO">Feminino</option>
                 <option value="OUTRO">outro</option>
               </select>
-              {errors.cpf && (
+              {errors.genero && (
                 <span className="text-red-600">selecione um genero</span>
               )}
             </div>
@@ -85,7 +84,7 @@ export const Register = () => {
                 type="date"
                 className="w-full h-14 bg-gray-800 rounded-lg placeholder:text-gray-500 pl-3 text-gray-50"
               />
-              {errors.cpf && (
+              {errors.data_nascimento && (
                 <span className="text-red-600">informe a data</span>
               )}
             </div>

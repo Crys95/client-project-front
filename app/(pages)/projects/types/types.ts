@@ -5,6 +5,6 @@ export interface RequestClient {
     genero: string
     nome: string
     sobrenome: string
-  }
+}
 
   

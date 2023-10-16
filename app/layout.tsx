@@ -3,7 +3,7 @@ import './globals.css'
 import { ReactNode } from 'react';
 import { Header } from './components/header';
 import { Footer } from './components/footer';
-import LayoutProvider from './pages/provider/_app';
+import LayoutProvider from './provider/_app';
 const inter = Inter({
   variable: '--font-inter',
   subsets: ['latin'],

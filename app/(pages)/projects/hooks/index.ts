@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form'
 import { RequestClient } from '../types/types';
 import { RegisterClient, recordIndividualSchema } from '../schemas/form.client';
 import { api } from '@/services/api';
+import { formatCPF } from '@/app/utils/format';
 
 export function useClinet() {
     const { push } = useRouter()
@@ -16,11 +17,22 @@ export function useClinet() {
     {onSuccess: () => {push('/')}}
     );
   
-    const { handleSubmit, register, formState: { errors }} = useForm<RegisterClient>({
+    const { handleSubmit, register, setValue ,formState: { errors }} = useForm<RegisterClient>({
       resolver: zodResolver(recordIndividualSchema)
     })
     const onSubmit = (data: RequestClient) => {
       RegisterClient.mutate(data)
+    }
+
+    const handleFormatMask = (value: string) => {
+      const valueWithOutMask = value.replaceAll('-', '').replaceAll('.','')
+      const isDocument = valueWithOutMask.length === 11
+      if(isDocument){
+        return setValue('cpf', formatCPF(value))
+      }
+
+      setValue('cpf', valueWithOutMask)
+      
     }
 
   return {
@@ -28,5 +40,6 @@ export function useClinet() {
     handleSubmit,
     register,
     onSubmit,
+    handleFormatMask
   }
 }

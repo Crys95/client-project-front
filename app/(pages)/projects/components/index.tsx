@@ -1,9 +1,10 @@
 "use client";
 import { motion } from "framer-motion";
 import { useClinet } from "../hooks";
+import { formatCPF } from "@/app/utils/format";
 
 export const Register = () => {
-  const { handleSubmit, onSubmit, register, errors } = useClinet();
+  const { handleSubmit, onSubmit, register, errors, handleFormatMask } = useClinet();
 
   return (
     <section className="w-full bg-hero-image h-[450px] lg:h-[630px] bg-cover bg-center bg-no-repeat flex flex-col items-center justify-center px-2">
@@ -44,7 +45,9 @@ export const Register = () => {
             <div className="flex flex-col">
               <input
                 {...register("cpf")}
+                onChange={(value) => handleFormatMask(value.target.value)}
                 type="text"
+                maxLength={14}
                 placeholder="cpf"
                 className="w-full h-14 bg-gray-800 rounded-lg placeholder:text-gray-500 pl-3 text-gray-50"
               />

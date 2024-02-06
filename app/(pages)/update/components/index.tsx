@@ -1,8 +1,8 @@
 'use client'
 import { motion } from 'framer-motion'
-import { useClinet } from '../hooks'
+import { useUpdate } from '../hooks'
 
-export const Register = () => {
+export const Update = () => {
   const {
     handleSubmit,
     onSubmit,
@@ -10,8 +10,7 @@ export const Register = () => {
     errors,
     handleFormatMask,
     handleFormatPhone,
-  } = useClinet()
-
+  } = useUpdate()
   return (
     <section className="w-full h-full bg-hero-image bg-gray-200 lg:h-[630px] bg-cover bg-center bg-no-repeat flex flex-col items-center justify-center px-2">
       <motion.div
@@ -101,7 +100,7 @@ export const Register = () => {
               className="bg-teal-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               type="submit"
             >
-              Registrar
+              Atualizar
             </button>
           </div>
         </form>

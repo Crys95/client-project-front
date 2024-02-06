@@ -1,9 +1,9 @@
-import { Register } from './components'
+import { Update } from '../components'
 
 export default function project() {
   return (
     <>
-      <Register />
+      <Update />
     </>
   )
 }

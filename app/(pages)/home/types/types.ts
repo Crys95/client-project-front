@@ -4,8 +4,8 @@ export interface itens {
   data_nascimento: string
   email: string
   genero: string
+  telefone: string
   nome: string
-  sobrenome: string
 }
 
 export interface IResponseClient {

@@ -1,15 +1,13 @@
 'use client'
-import { QueryClient, QueryClientProvider } from 'react-query';
-import { ReactNode } from 'react';
+import { QueryClient, QueryClientProvider } from 'react-query'
+import { ReactNode } from 'react'
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient()
 
-function LayoutProvider( {children}:{children:ReactNode} ) {
+function LayoutProvider({ children }: { children: ReactNode }) {
   return (
-    <QueryClientProvider client={queryClient}>
-     {children}
-    </QueryClientProvider>
-  );
+    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+  )
 }
 
-export default LayoutProvider;
+export default LayoutProvider
